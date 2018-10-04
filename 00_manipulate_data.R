@@ -80,10 +80,14 @@ ggplot(movAvg_Trump, aes(x = Date, y = avgApprove)) +
   geom_line()
 
 
+# Now plot every president's approval using moving averages
+allApproval <- gallup %>%
+  group_by(President) %>%
+  mutate(avgApproval =
+           rollmean(Approve, 10, na.pad = TRUE, align = "right"))
 
-
-
-
+ggplot(allApproval, aes(x = Days, y = avgApproval, col = President)) +
+  geom_line()
 
 
 ############################# NOTES ###########################################
