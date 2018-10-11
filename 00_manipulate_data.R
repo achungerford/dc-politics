@@ -30,13 +30,12 @@ library(zoo)       # for working with dates
 library(ggplot2)   # for visualizations
 
 
-# Importing data from CSV file, viewing first few rows
+# Importing data. All presidential approval polls from Gallup.
 gallup <- read.csv("gallup approval polls.csv", header = TRUE)
 head(gallup)
 
 
-# Select the President, Date, and Approve columns 
-# and filter to observations where President is equal to "Trump"
+# Select the President, Date, and Approve columns. Filter "Trump" only.
 Trump_Approval <- select(gallup, President, Date, Approve) %>%
   filter(President == "Trump")
 
